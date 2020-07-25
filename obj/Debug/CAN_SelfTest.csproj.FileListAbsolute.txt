@@ -1,0 +1,13 @@
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\bin\Debug\CAN_SelfTest.exe.config
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\bin\Debug\CAN_SelfTest.exe
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\bin\Debug\CAN_SelfTest.pdb
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\obj\Debug\CAN_SelfTest.csprojAssemblyReference.cache
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\obj\Debug\CAN_SelfTest.Form1.resources
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\obj\Debug\CAN_SelfTest.Properties.Resources.resources
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\obj\Debug\CAN_SelfTest.csproj.GenerateResource.cache
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\obj\Debug\CAN_SelfTest.csproj.CoreCompileInputs.cache
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\obj\Debug\CAN_SelfTest.exe
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\obj\Debug\CAN_SelfTest.pdb
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\bin\Debug\CSkin.dll
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\bin\Debug\CSkin.xml
+E:\Works\Car_Selftest\C#_CODE\CAN_SelfTest\CAN_SelfTest\obj\Debug\CAN_SelfTest.csproj.CopyComplete
