@@ -110,6 +110,7 @@ namespace CAN_SelfTest
         bool open_device_flag = false;
 
         public int Channel_index_ { get => channel_index_; set => channel_index_ = value; }
+        public int i { get; private set; }
 
         public Form1()
         {
@@ -1050,12 +1051,107 @@ namespace CAN_SelfTest
             if (response == 0) response = 0;
             else response = 8;
             int index = this.dataGridView3.Rows.Add();
-            dataGridView3.Rows[index].Cells[0].Value = serial++;
-            dataGridView3.Rows[index].Cells[1].Value = Description.Text;
+            dataGridView3.Rows[index].Cells[0].Value = Description.Text;
             if(Convert.ToInt32(Service_ID.Text) == 14)
-                dataGridView3.Rows[index].Cells[2].Value = String.Format("{0} {1}", Service_ID.Text,  textBox2.Text);
+                dataGridView3.Rows[index].Cells[1].Value = String.Format("{0} {1}", Service_ID.Text,  textBox2.Text);
             else
-                dataGridView3.Rows[index].Cells[2].Value = String.Format("{0} {1}{2} {3}", Service_ID.Text , response, Subserver_select + 1, textBox2.Text);
+                dataGridView3.Rows[index].Cells[1].Value = String.Format("{0} {1}{2} {3}", Service_ID.Text , response, Subserver_select + 1, textBox2.Text);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void skinButton5_Click(object sender, EventArgs e)
+        {
+            Description.Text = "按标识符读取数据";
+            Service_ID.Text = "22";
+            Subserver.Enabled = false;
+            response_reject.Enabled = false;
+        }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            dataGridView3.Rows.Clear();
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow dr in dataGridView3.SelectedRows)
+            {
+                dataGridView3.Rows.Remove(dr);
+            }
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            UpDataGridView(dataGridView3);
+        }
+        /// <summary>
+        /// 上移
+        /// </summary>
+        /// <param name="dataGridView"></param>
+        public static void UpDataGridView(DataGridView dataGridView)
+        {
+            try
+            {
+                DataGridViewSelectedRowCollection dgvsrc = dataGridView.SelectedRows;//获取选中行的集合
+                if (dgvsrc.Count > 0)
+                {
+                    int index = dataGridView.SelectedRows[0].Index;//获取当前选中行的索引
+                    if (index > 0)//如果该行不是第一行
+                    {
+                        DataGridViewRow dgvr = dataGridView.Rows[index - dgvsrc.Count];//获取选中行的上一行
+                        dataGridView.Rows.RemoveAt(index - dgvsrc.Count);//删除原选中行的上一行
+                        dataGridView.Rows.Insert((index), dgvr);//将选中行的上一行插入到选中行的后面
+                        for (int i = 0; i < dgvsrc.Count; i++)//选中移动后的行
+                        {
+                            dataGridView.Rows[index - i - 1].Selected = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+
+        /// <summary>
+        /// 下移
+        /// </summary>
+        /// <param name="dataGridView"></param>
+        public static void DownDataGridView(DataGridView dataGridView)
+        {
+            try
+            {
+                DataGridViewSelectedRowCollection dgvsrc = dataGridView.SelectedRows;//获取选中行的集合
+                if (dgvsrc.Count > 0)
+                {
+                    int index = dataGridView.SelectedRows[0].Index;//获取当前选中行的索引
+                    if (index >= 0 & (dataGridView.RowCount - 1) != index)//如果该行不是最后一行
+                    {
+                        DataGridViewRow dgvr = dataGridView.Rows[index + 1];//获取选中行的下一行
+                        dataGridView.Rows.RemoveAt(index + 1);//删除原选中行的上一行
+                        dataGridView.Rows.Insert((index + 1 - dgvsrc.Count), dgvr);//将选中行的上一行插入到选中行的后面
+                        for (int i = 0; i < dgvsrc.Count; i++)//选中移动后的行
+                        {
+                            dataGridView.Rows[index + 1 - i].Selected = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            DownDataGridView(dataGridView3);
         }
     }
 }
